@@ -9,6 +9,7 @@ require("connect.php");
 
 // 3. Выполнить программную логику: изменить данные в базе и (или) получить данные из базы
 
+$password = md5($password);
 $loginResult = $mysqli->query("SELECT id, nickname, rating, osebe, country FROM users WHERE nickname = '{$nickname}' AND password = '{$password}'");
 $user = $loginResult->fetch_array(MYSQLI_ASSOC);
 
