@@ -13,6 +13,9 @@ $messageResult = $mysqli->query("SELECT m.Id, message, nickname, date from messa
 
 while ($food = mysqli_fetch_assoc($messageResult)) {
 
+	foreach($food as &$value)
+		$value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+
 	array_push($result, $food);
 	//print_r($food);
 

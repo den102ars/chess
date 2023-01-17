@@ -17,6 +17,9 @@ while($row = $result->fetch_array(MYSQLI_ASSOC))// получаем все ст�
 {
     //echo $row['nickname'], $row['name'];// выводим данные
 
+	foreach($row as &$value)
+		$value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+
     array_push($users, $row);
 }
 

@@ -19,6 +19,9 @@ while($row = $loginResults->fetch_array(MYSQLI_ASSOC))// получаем все
 {
     //echo $row['nickname'], $row['name'];// выводим данные
 
+	foreach($row as &$value)
+		$value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+
     array_push($friends, $row);
 }
 
