@@ -18,6 +18,13 @@ $(function Visit(){
                 var users = data[i];
                 console.log(users);
                 $(".imya").text(users.nickname);
+				if(users.last_online) {
+					var last_online = new Date(users.last_online);
+					if(Date.now() - 1000 * 10 * 60 < last_online.getTime())
+						$(".online").text('online')
+					else
+						$(".online").text('был в сети: ' + users.last_online)
+				}
                 $(".score").text(users.rating);
                 $(".osebe").text(users.osebe);
                 $(".country").text(users.country);
@@ -44,6 +51,14 @@ $(function(){
                     var list = $("#structure .list").clone(true);
                     $(".table").append(list);
                     list.find(".friends").text(users.nickname);
+					if(users.last_online) {
+						var last_online = new Date(users.last_online);
+						if(Date.now() - 1000 * 10 * 60 < last_online.getTime())
+							last_online = 'online';
+						else
+							last_online = users.last_online;
+						list.find(".friends").text(users.nickname + '(' + last_online + ')');
+					}
                 }
             }
         });

@@ -8,6 +8,14 @@ $(function(){
 			$(".table").append(list);
 			list.find(".position").text(i + 1);
 			list.find(".name").text(users.nickname);
+			if(users.last_online) {
+				var last_online = new Date(users.last_online);
+				if(Date.now() - 1000 * 10 * 60 < last_online.getTime())
+					last_online = 'online';
+				else
+					last_online = users.last_online;
+				list.find(".name").text(users.nickname + ' (' + last_online + ')');
+			}
 			list.find(".coin").text(users.rating);
 			list.find(".name").attr("myid", users.id)
 		};
@@ -27,6 +35,14 @@ $(function(){
 			$(".tablee").append(list);
 			list.find(".position").text(i + 1);
 			list.find(".name").text(users.nickname);
+			if(users.last_online) {
+				var last_online = new Date(users.last_online);
+				if(Date.now() - 1000 * 10 * 60 < last_online.getTime())
+					last_online = 'online';
+				else
+					last_online = users.last_online;
+				list.find(".name").text(users.nickname + ' (' + last_online + ')');
+			}
 			list.find(".coin").text(users.rating);
 			list.find(".name").attr("myid", users.id)
 		};

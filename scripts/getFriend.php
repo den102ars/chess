@@ -10,7 +10,7 @@ require("connect.php");
 
 // 3. Выполнить программную логику: изменить данные в базе и (или) получить данные из базы
 $friends = array();
-$loginResults = $mysqli->query("SELECT nickname FROM users INNER JOIN friends ON users.id = friends.friend_id WHERE '{$user}' = friends.user_id");
+$loginResults = $mysqli->query("SELECT nickname, last_online FROM users INNER JOIN friends ON users.id = friends.friend_id WHERE '{$user}' = friends.user_id");
 //$result = $loginResult->fetch_array(MYSQLI_ASSOC);
 
 // 4. Вернуть результат (итоговые данные) клиенту
