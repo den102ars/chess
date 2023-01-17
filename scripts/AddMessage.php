@@ -11,7 +11,11 @@ require("connect.php");
 // 3. Выполнить программную логику: изменить данные в базе и (или) получить данные из базы
 
 
-$Result1 = $mysqli->query("INSERT INTO messages (message,date,userID) VALUES ('{$mes}', CURRENT_DATA, '{$user}')");
+$Result1 = $mysqli->query(sprintf(
+	"INSERT INTO messages (message,date,userID) VALUES ('%s', CURRENT_DATE(), '%s')",
+	$mysqli->real_escape_string($mes),
+	$mysqli->real_escape_string($user)
+));
 if ($Result1){
     echo json_encode($Result1);
 }

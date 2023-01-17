@@ -21,7 +21,11 @@ if ($CheckNick->num_rows > 0){
 }
 else if ($password1 == $password2){
 	$password1 = md5($password1);
-	$Result1 = $mysqli->query("INSERT INTO users (nickname,password,rating, avatar) VALUES ('{$nickname}', '{$password1}', '0', '0')");
+	$mysqli->query(sprintf(
+		"INSERT INTO users (nickname,password,rating,avatar) VALUES ('%s', '%s')",
+		$mysqli->real_escape_string($nickname),
+		$mysqli->real_escape_string($password1)
+	));
 	echo 'success';
 }
 else if (!$password1 != $password2) {

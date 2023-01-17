@@ -9,5 +9,9 @@ if(!$_SESSION["user"])
 require("connect.php");
 // 3. Выполнить программную логику: изменить данные в базе и (или) получить данные из базы
 $mysqli->query("UPDATE users SET last_online = NOW() WHERE id = '{$user}'");
+$mysqli->query(sprintf(
+	"UPDATE users SET last_online = NOW() WHERE id = '%s'",
+	$mysqli->real_escape_string($user)
+));
 
 ?>

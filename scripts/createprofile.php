@@ -15,11 +15,19 @@ require("connect.php");
 //$create1 = $mysqli->query("UPDATE users SET Osebe = '{$osebe}' WHERE Osebe = '?'")
 if ($osebe == "")
 {
-    $Create2 = $mysqli->query("UPDATE users SET country = '{$country}' WHERE id = '{$user}'");
+	$mysqli->query(sprintf(
+		"UPDATE users SET country = '%s' WHERE id = '%s'",
+		$mysqli->real_escape_string($country),
+		$mysqli->real_escape_string($user)
+	));
 }
 else {
-    $Create = $mysqli->query("UPDATE users SET osebe = '{$osebe}' WHERE id = '{$user}'");
-    $Create2 = $mysqli->query("UPDATE users SET country = '{$country}' WHERE id = '{$user}'");
+	$mysqli->query(sprintf(
+		"UPDATE users SET osebe = '%s', country = '%s' WHERE id = '%s'",
+		$mysqli->real_escape_string($osebe),
+		$mysqli->real_escape_string($country),
+		$mysqli->real_escape_string($user)
+	));
 }
 
 //$myrow = $CheckNick->fetch_array(MYSQLI_ASSOC);
