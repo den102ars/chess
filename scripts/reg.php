@@ -22,7 +22,7 @@ if ($CheckNick->num_rows > 0){
 else if ($password1 == $password2){
 	$password1 = md5($password1);
 	$mysqli->query(sprintf(
-		"INSERT INTO users (nickname,password,rating,avatar) VALUES ('%s', '%s')",
+		"INSERT INTO users (nickname,password) VALUES ('%s', '%s')",
 		$mysqli->real_escape_string($nickname),
 		$mysqli->real_escape_string($password1)
 	));
