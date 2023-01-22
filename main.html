@@ -17,7 +17,7 @@
 <audio src="muzik.mp3" autoplay loop></audio>        
 <div class="header">
     <div class="menu">
-        <button type="submit">Создать игру</button>
+        <button type="submit" onclick="$.post('scripts/gameRequest.php', '', function(data) {alert('запрос на создание игры успешно отправлен, всего вами отправлено запросов: ' + data)} )">Создать игру</button>
         <button type="submit">Одиночная игра</button>
         <button type="submit" onclick="window.location.href='profile.html'">Профиль</button>
         <button id="outload">Выход</button>
